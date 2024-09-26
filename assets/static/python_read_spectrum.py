@@ -24,5 +24,8 @@ for x in range(len(power_split)):
     power_list.append(float(power_split[x]))
 plt.plot(power_list)
 plt.show()
+fp=open('power_array.txt', "w")
+fp.write(power)
+fp.close()
 Instr19.close()
 Usb0.close()
