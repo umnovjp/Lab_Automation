@@ -13,6 +13,9 @@ rm.list_resources()
 Instr19=rm.open_resource('GPIB0::19::INSTR')
 Usb0=rm.open_resource('USB0::0x0B5B::0xFFF9::815093_146_11::INSTR')
 Instr19.write('freq 2.355000000000E+09')
+Instr19.write('power 10')
+Usb0.timeout=3000
+Instr19.timeout=3000
 power=Usb0.query("trace:data?")
 import numpy as np
 import matplotlib.pyplot as plt
