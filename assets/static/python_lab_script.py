@@ -61,3 +61,6 @@ print(content)
 w1, s1 = np.loadtxt("tek0034.csv", skiprows=21, delimiter=",", unpack=True)
 plt.rcParams['agg.path.chunksize']=500
 plt.semilogy(w1,s1)
+
+import sys
+print(sys.path)
