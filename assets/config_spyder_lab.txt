@@ -1,0 +1,36 @@
+install ni visa
+install 488.2 driver
+install miniconda
+folder is c://users/username/miniconda/
+install spyder
+
+add new channel miniforge to miniconda3 (in anaconda powershell prompt)
+
+conda config --add channels conda-forge
+(just in case to create new environment: conda create -n <ENV NAME>
+conda activate <ENV NAME>
+base is default environment name
+)
+
+install pyvisa 
+
+conda install pyvisa
+
+it is installed to c://users/username/miniconda3/lib/site-packages
+
+folder is c://users/username/Anaconda/lib/site-packages
+
+import sys
+print(sys.path)
+
+copy pyvisa, pyvisa-py, pyusb to folder in system path C://Program Files/Spyder/pkgs
+
+conda list for all packages installed
+
+then install ipywidgets (jupyter notebook and jupyterlab 3.x are not installed)
+
+conda install -c conda-forge ipywidgets (many packages installed but not jupyter notebook or jupyter lab)
+
+did not work displayed as text installed jupyterlab 4.3.2 then ran 
+
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
