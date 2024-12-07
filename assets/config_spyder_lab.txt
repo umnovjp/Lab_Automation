@@ -36,3 +36,5 @@ did not work displayed as text installed jupyterlab 4.3.2 then ran
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 
 start jupyter lab `jupyter lab' in conda prompt
+
+install numpy, matplotlib
