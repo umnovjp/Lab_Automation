@@ -2,11 +2,7 @@
 """
 Spyder Editor
 
-power_split2, power_split is a list
-power_array is numpy.ndarray
-power is str
 plt.semilogy(w1,s1)
-length of power_split2 is 1 but length of power_split is 551
 
 This is a temporary script file.
 """
