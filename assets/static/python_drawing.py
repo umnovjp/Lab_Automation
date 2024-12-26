@@ -15,3 +15,4 @@ plt.rcParams['agg.path.chunksize']=500
 plt.xlim(-0.005,0.005)
 plt.ylim(-1,1)
 plt.plot(w1,s1)
+plt.show()
