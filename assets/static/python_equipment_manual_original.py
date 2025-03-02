@@ -42,7 +42,7 @@ class MS2721E(LabInstrument):
         freqStart = Usb0.query('frequency:start?')
         freqStop = Usb0.query('frequency:stop?')
         for x in range(len(power_split)):
-            #power_axis.append((0.000000001)*float(freqStart)+0.000000001*x*(float(freqStop)-float(freqStart))/len(power_split))
+            power_axis.append((0.000000001)*float(freqStart)+0.000000001*x*(float(freqStop)-float(freqStart))/len(power_split))
             power_list.append(float(power_split[x]))
         
         plt.plot(power_axis,power_list, label='2351')
@@ -54,8 +54,6 @@ import matplotlib.pyplot as plt
 import time
 
 power_list = []
-power_list850 = []
-power_list852 = []
 power_axis = []
 rm=visa.ResourceManager()
 rm.list_resources()
@@ -66,37 +64,13 @@ Usb0.timeout = 3000
 Instr28.timeout = 3000
 
 generator = SML02(Instr28)
-Instr28.write('freq 0.850000000000E+09')
 print('IDN= {}'.format(generator.idn))
 generator.freq
 print('Frequency={:f} GHz'.format(generator.freq/1e9))
-power850=Usb0.query("trace:data?")
-power_split850=power850.split(',')
-power_split850.pop(0)
-power_split850.pop(len(power_list)-1)
-power_array850 = np.array(power_split850)
-time.sleep(3)
-Instr28.write('freq 0.852000000000E+09')
-# generator.freq = 852000000 # this line does not do what it is expected to do
-power852=Usb0.query("trace:data?")
-power_split852=power852.split(',')
-power_split852.pop(0)
-power_split852.pop(len(power_list)-1)
-power_array852 = np.array(power_split852)
-time.sleep(3)
+time.sleep(5)
+generator.freq = generator.freq+5000000 # this line does not do what it is expected to do
+time.sleep(5)
 print('Frequency={:f} GHz'.format(generator.freq/1e9))
-freqStart = Usb0.query('frequency:start?')
-freqStop = Usb0.query('frequency:stop?')
-
-for x in range(len(power_split850)):
-    power_axis.append((0.000000001)*float(freqStart)+0.000000001*x*(float(freqStop)-float(freqStart))/len(power_split850))
-    power_list850.append(float(power_split850[x]))
-    power_list852.append(float(power_split852[x]))
-    
-
-plt.plot(power_axis, power_list850, label='850')
-plt.plot(power_axis, power_list852, label='852')
-plt.show()
 
 analyzer = MS2721E(Usb0)
 print('IDN= {}'.format(analyzer.idn))
